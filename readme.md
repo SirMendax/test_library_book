@@ -2,7 +2,7 @@
 
 ### Запуск приложения
 1. composer install
-2. sudo chmod a+x start.sh
+2. sudo chmod u+x start.sh
 3. ./start.sh
 4. docker ps (скопировать id fpm-контейнера)
 5. sudo docker exec -it <id fpm-контейнера> /bin/bash
