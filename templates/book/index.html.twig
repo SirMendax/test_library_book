@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book's list{% endblock %}
+
+{% block body %}
+  {% for message in app.flashes('notices') %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+  <small class="d-block text-right mb-3">
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('book_store') }}" class="btn btn-primary">add book</a>
+    {% endif %}
+  </small>
+  <ul>
+    {% for book in books %}
+      <li class="row justify-content-between shadow-sm p-3 mb-5 bg-white rounded align-items-center">
+        <div class="col-6">
+          <h3><a href="{{ path('book_show', {'id': book.id}) }}">{{ book.title }}</a></h3>
+          <p>Author: {{ book.author }}</p>
+          <p>Year of published: {{ book.yearOfPublished }}</p>
+          <p>Added: {{ book.user.username }}</p>
+        </div>
+        <div class="col-3 d-block text-right">
+          {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn btn-success">edit</a>
+            <a href="{{ path('book_delete', {'id': book.id}) }}" class="btn btn-danger">delete</a>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="jumbotron">
+    <h1 class="display-5">Hello, {{ app.user.name }}!</h1>
+    <p class="lead">This application is simple library book.</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="/books" role="button">to book's list</a>
+  </div>
+{% endblock %}
